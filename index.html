@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chilchotla, Puebla | Joya Cultural</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primario: #2c5e13; 
+            --color-secundario: #1c4e03; 
+            --color-fondo: #eaf8e3; 
+            --color-texto: #333;
+            --color-texto-blanco: #fff;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            position: relative;
+            height: 100vh;
+            background: url('imagen26.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-texto-blanco);
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        .nav-menu {
+            background: var(--color-primario);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--color-texto-blanco);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--color-secundario);
+        }
+
+        .introduccion {
+            padding: 2rem;
+            text-align: center;
+            background: var(--color-secundario);
+            color: var(--color-texto-blanco);
+        }
+
+        .galeria {
+            display: flex;
+            overflow-x: auto;
+            padding: 2rem;
+            gap: 1rem;
+            scroll-snap-type: x mandatory;
+        }
+
+        .galeria img {
+            height: 300px;
+            width: auto;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            scroll-snap-align: center;
+        }
+
+        .galeria img:hover {
+            transform: scale(1.05);
+        }
+
+        .preguntas {
+            padding: 2rem;
+            background: #f0f0f0;
+        }
+
+        .pregunta-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 1px solid var(--color-primario);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .respuesta {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            border-left: 3px solid var(--color-primario);
+            background: #e9e9e9;
+        }
+
+        .poema {
+            text-align: center;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+
+        footer {
+            background: var(--color-primario);
+            color: var(--color-texto-blanco);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .referencias {
+            margin-top: 2rem;
+        }
+
+        .separador {
+            border-top: 2px solid var(--color-primario);
+            margin: 2rem 0;
+        }
+
+        .contenido {
+            display: none;
+            padding: 2rem;
+        }
+
+        .visible {
+            display: block;
+        }
+        .galeria-gastronomia {
+            display: flex;
+            overflow-x: auto;
+            padding: 2rem;
+            gap: 1rem;
+            scroll-snap-type: x mandatory;
+        }
+        .tarjeta {
+            background: var(--color-texto-blanco);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            flex: 0 0 auto;
+            width: 200px;
+            text-align: center;
+            scroll-snap-align: start;
+            transition: transform 0.3s;
+        }
+        .tarjeta:hover {
+            transform: scale(1.05);
+        }
+        .tarjeta img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .tarjeta h3 {
+            margin: 0.5rem 0;
+            color: var(--color-primario);
+        }
+        .tarjeta p {
+            padding: 0 1rem 1rem;
+            color: var(--color-texto);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chilchotla, Puebla</h1>
+    </header>
+
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#inicio" onclick="mostrarContenido('inicio')">Inicio</a></li>
+                        <li><a href="#historia" onclick="mostrarContenido('historia')">Historia</a></li>
+                        <li><a href="#cultura" onclick="mostrarContenido('cultura')">Cultura</a></li>
+                        <li><a href="#arte" onclick="mostrarContenido('arte')">Arte</a></li>
+                        <li><a href="#geografia" onclick="mostrarContenido('geografia')">Geografía</a></li>
+                        <li><a href="#tradiciones" onclick="mostrarContenido('tradiciones')">Tradiciones</a></li>
+                        <li><a href="#gastronomia" onclick="mostrarContenido('gastronomia')">Gastronomía</a></li>
+                        <li><a href="#religion" onclick="mostrarContenido('religion')">Religión</a></li>
+                        <li><a href="#turismo" onclick="mostrarContenido('turismo')">Lugares Turísticos</a></li>
+                    </ul>
+                </nav>
+            
+                <section id="inicio" class="contenido visible">
+                    <div class="introduccion">
+                        <h2>Bienvenido a Chilchotla</h2>
+                        <p>Chilchotla es un municipio lleno de historia, cultura y tradiciones que cautivan a quienes lo visitan. Rodeado de paisajes naturales impresionantes, este lugar combina su riqueza gastronómica, como el mole poblano y los tamales, con festividades llenas de color y significado, como el Día de Muertos y su tradicional Carnaval. Cada rincón de Chilchotla cuenta una historia única que refleja la esencia de su gente y su conexión con las raíces ancestrales.</p>
+                    </div>
+                    <section class="galeria">
+                        <img src="imagen2.jpg" alt="Imagen 2">
+                        <img src="imagen3.jpg" alt="Imagen 3">
+                        <img src="chilchotla.jpg" alt="Imagen 4">
+                        <img src="imagen14.jpg" alt="Imagen 5">
+                        <img src="imagen22.jpg" alt="Imagen 6">
+                        <img src="imagen17.jpg" alt="Imagen 7">
+                        <img src="imagen21.jpg" alt="Imagen 8">
+                        <img src="imagen40.jpg" alt="Imagen 9">
+                        <img src="imagen1.jpg" alt="Imagen 10">
+                    </section>
+                </section>
+            
+                <section id="historia" class="contenido">
+                    <h2>Historia</h2>
+                    <p>La historia del municipio de Chilchotla, Puebla, está profundamente arraigada en sus orígenes prehispánicos, cuando fue habitado por grupos nahuas. Su nombre proviene del náhuatl y tiene dos posibles significados: "lugar donde abunda el chile que hace llorar", derivado de chilchotl (chile picante) y tla (abundancia), o "donde brota mucho jilote o maíz tierno", basado en la palabra Xilxotla. Este último significado parece más probable según estudios realizados en la región. </p>
+                    <h4><p>Época Prehispánica y Conquista Española</p></h4>
+                    <p>Antes de la llegada de los españoles, Chilchotla era un asentamiento indígena que formaba parte de la cultura nahua. En 1522, durante la conquista española, el territorio fue sometido y posteriormente incorporado a la estructura colonial. En el siglo XVII, se convirtió en una Alcaldía Mayor bajo la jurisdicción de San Juan de los Llanos, consolidando su importancia administrativa en la región.</p>
+                    <h4><p>Desarrollo Colonial y Siglo XIX</p></h4>
+                    <p>En 1750, Chilchotla quedó bajo la jurisdicción eclesiástica de San Juan de los Llanos. Durante el siglo XIX, formó parte del antiguo Distrito de Chalchicomula. En 1895, alcanzó la categoría de municipio libre, consolidándose como una entidad autónoma dentro del estado de Puebla. Su cabecera municipal fue nombrada Villa de Chilchotla de Rafael J. García en honor al político que fue gobernador del estado en 1867.</p>
+                    <h3><p>Importancia Histórica</p></h3>
+                    <p>A lo largo de su historia, Chilchotla ha sido testigo de transformaciones sociales y económicas. Desde su fundación como asentamiento indígena hasta su consolidación como municipio libre en 1895, ha mantenido una identidad cultural única que combina elementos indígenas y coloniales. Su ubicación estratégica cerca del Pico de Orizaba ha influido tanto en su desarrollo económico como en su relevancia histórica dentro del estado de Puebla.</p>
+                    <div class="galeria">
+                        <img src="imagen21.jpg" alt="Historia 1">
+                        <img src="imagen40.jpg" alt="Historia 2">
+                        <img src="imagen3.jpg" alt="Historia 3">
+                    </div>
+                </section>
+            
+                <section id="cultura" class="contenido">
+                    <h2>Cultura</h2>
+                    <p>La cultura del municipio de Chilchotla, Puebla, está profundamente influenciada por su ubicación geográfica, historia y raíces indígenas. Este municipio, situado en la Sierra Madre Oriental y rodeado de paisajes montañosos, ha desarrollado una identidad cultural única que combina elementos de su pasado prehispánico con influencias coloniales y modernas. La vida cotidiana de sus habitantes refleja un fuerte vínculo con la naturaleza, la comunidad y las expresiones artísticas que han sido transmitidas de generación en generación.</p>
+                    <h4>Raíces Indígenas</h4>
+                    <p>Chilchotla tiene una herencia indígena que se manifiesta en diversos aspectos de su cultura. Aunque el náhuatl ya no es tan común como lengua hablada, muchas palabras y expresiones derivadas de esta lengua persisten en el vocabulario local. Además, las prácticas agrícolas tradicionales, como el cultivo de maíz, frijol y papa, son un reflejo de las técnicas ancestrales adaptadas al clima y la geografía del municipio. La conexión con la tierra sigue siendo un elemento esencial en la vida cultural de Chilchotla.</p>
+                    <h4>Identidad Comunitaria</h4>
+                    <p>La cultura chilchotleca está marcada por un fuerte sentido de comunidad y solidaridad. Las actividades colectivas son comunes, desde proyectos locales hasta eventos culturales organizados por el gobierno municipal. Este espíritu comunitario refuerza los lazos entre las familias y fomenta una identidad compartida basada en valores como el respeto mutuo y el trabajo conjunto.</p>
+                    <h4>Modernización Cultural</h4>
+                    <p>Aunque Chilchotla mantiene viva su herencia cultural, también ha experimentado cambios debido a influencias externas. La migración hacia otras ciudades ha traído nuevas perspectivas culturales al municipio, lo que ha generado una mezcla entre tradiciones locales y elementos modernos. Sin embargo, los habitantes han demostrado un compromiso constante por preservar su esencia cultural mientras se adaptan a las transformaciones sociales.</p>
+                    <div class="galeria">
+                        <img src="imagen27.jpg" alt="Cultura 1">
+                        <img src="imagen24.jpg" alt="Cultura 1">
+                        <img src="imagen38.jpg" alt="Cultura 3">
+                        <img src="imagen20.jpg" alt="Cultura 4">
+                    </div>
+                </section>
+            
+                <section id="arte" class="contenido">
+                    <h2>Arte</h2>
+                    <p>El arte y la artesanía del municipio de Chilchotla, Puebla, reflejan una rica tradición cultural que combina técnicas ancestrales con expresiones contemporáneas. Aunque el municipio no es ampliamente conocido por una producción artística específica, su participación en eventos culturales y la preservación de técnicas artesanales destacan como parte importante de su identidad.</p>
+                    <h4>Artesanía Local</h4>
+                    <p>En Chilchotla, la artesanía es un elemento significativo de su cultura. Durante la Feria Chilchotla, los artesanos locales exponen y venden sus creaciones, que incluyen textiles bordados, alfarería y joyería hecha a mano. Estas piezas son elaboradas con materiales locales y técnicas tradicionales que han sido transmitidas de generación en generación. Los textiles bordados, por ejemplo, suelen incorporar diseños florales y geométricos que reflejan la conexión con la naturaleza y las tradiciones indígenas de la región</p>
+                    <h4>Expresiones Artísticas en Festividades</h4>
+                    <p>El arte también se manifiesta en las festividades locales, como el Día de Muertos. En estas celebraciones, los habitantes participan en concursos de ofrendas y desfiles de calaveritas, donde destacan por su creatividad al diseñar altares y disfraces. Los concursos de "Catrinas" son una muestra del talento artístico local, ya que los participantes elaboran vestuarios y máscaras con gran detalle, utilizando materiales diversos para expresar su visión de esta tradición mexicana</p>
+                    <h4>Técnicas Artesanales</h4>
+                    <p>Puebla es conocido por su diversidad artesanal, y Chilchotla forma parte de este panorama. Aunque no se menciona específicamente una técnica exclusiva del municipio, el estado cuenta con tradiciones como el tejido en telar de cintura, el barro policromado y el papel amate. Estas técnicas podrían influir indirectamente en las creaciones locales debido a la cercanía geográfica y cultural</p>
+                    <h4>Promoción del Arte</h4>
+                    <p>El gobierno municipal ha fomentado el arte y las artesanías mediante eventos como muestras artesanales en la Feria Chilchotla y concursos culturales. Estas iniciativas buscan preservar las habilidades artísticas locales y promoverlas entre las nuevas generaciones</p>
+                    <div class="galeria">
+                        <img src="imagen37.jpg" alt="Arte 1">
+                        <img src="1.jpg" alt="Arte 2">
+                        <img src="3.jpg" alt="Arte 3">
+                        <img src="7.jpg" alt="Arte 3">
+                    </div>
+                </section>
+            
+                <section id="geografia" class="contenido">
+                    <h2>Geografía</h2>
+                    <p>El municipio de Chilchotla, Puebla, se encuentra en la región centro-este del estado, dentro de la Sierra Madre Oriental. Su superficie es de 146.95 km² y presenta una altitud media de 2,460 metros sobre el nivel del mar, con un rango que varía entre los 1,780 y los 3,460 metros. Este relieve montañoso y accidentado es característico de la región y define gran parte de su geografía.</p>
+                    <h4>Ubicación y Límites</h4>
+                    <p>Chilchotla colinda al norte con el estado de Veracruz (municipios de Ayahualulco y Lafragua), al este con Quimixtlán, al sur con Tlachichuca y Quimixtlán, y al oeste nuevamente con Lafragua. Sus coordenadas geográficas son 19°14′57″N y 97°13′16″O.</p>
+                    <h4>Orografía</h4>
+                    <p>El municipio se encuentra en la parte occidental de la Sierra de Quimixtlán, cubierta por materiales volcánicos del tipo Andosol. Su topografía es predominantemente montañosa, aunque presenta un declive suave hacia el centro-oeste. Destacan varias sierras importantes:
+
+                        Sierra del Noroeste: Formada por los cerros La Paz, Los Órganos y Xocotepec.
+                        
+                        Sierra del Centro-Oeste: Ubicada entre los ríos Acomocotla y Colotlaupa; incluye los cerros Chichina y Tobardillo.
+                        
+                        Sierra Sureste: Culmina cerca de la cabecera municipal.
+                        
+                        Sierra del Noreste: Cuenta con numerosas ramificaciones.
+                        
+                        Además, existen cerros aislados como Ajapixtla, Xocotzin y Tecuacoy.</p>
+                    <h4>Hidrografía</h4>
+                    <p>El municipio está atravesado por varios ríos importantes que forman parte del sistema hidrológico que desemboca en el Golfo de México. Entre ellos destacan:
+
+                        Río Huitzilapan: El más importante de la región, baña el sur del municipio y es uno de los principales formadores del río La Antigua.
+                        
+                        Otros ríos como Nexhuacán, Colotlanago, Acocomotla y Los Paredones recorren el poniente antes de unirse al Huitzilapan.
+                        
+                        En el noreste fluyen los ríos Blanco, Ocoxochitl y Huitzilaconi, que también se integran al Huitzilapan.
+                        
+                        Los ríos Los Moros, El Aguacate y Tlamanco nacen en el noreste del municipio y forman el río Los Ajolotes.</p>
+                        También existen arroyos intermitentes que complementan esta red hidrográfica
+                    <h4>Clima</h4>
+                    <p>El clima predominante es templado húmedo con abundantes lluvias en verano. En las zonas más elevadas de la sierra se presenta un clima semifrío subhúmedo.</p>
+                    <h4>Vegetación</h4>
+                    <p>Aunque ha perdido parte de su vegetación original, Chilchotla conserva extensas áreas boscosas al noreste del municipio. Predominan especies como pino, encino, roble, oyamel, acahuite, madroño y escobilla.</p>
+                    <div class="galeria">
+                        <img src="9.jpg" alt="Geografía 2">
+                        <img src="imagen22.jpg" alt="Geografía 3">
+                    </div>
+                </section>
+            
+                <section id="tradiciones" class="contenido">
+                    <h2>Tradiciones</h2>
+                    <p>El municipio de Chilchotla, Puebla, cuenta con una rica herencia cultural que se refleja en sus tradiciones, las cuales son celebradas con entusiasmo por sus habitantes y tienen un profundo significado comunitario.</p>
+                    <h4>Día de Muertos:</h4>
+                    <p>Una de las tradiciones más importantes en Chilchotla es la celebración del Día de Muertos y Todos Santos. Durante esta festividad, las familias colocan ofrendas florales y de alimentos en honor a sus seres queridos fallecidos. Además, se realizan concursos de ofrendas organizados por el gobierno municipal, en los que participan escuelas y comunidades locales. Estas actividades buscan preservar las costumbres mexicanas y fomentar la creatividad entre los participantes</p>
+                    <h4>Feria de San Pedro y San Pablo</h4>
+                    <p>Esta es la fiesta patronal más destacada del municipio y se celebra cada año a finales de junio. Incluye misas, rezos, procesiones, danzas tradicionales, juegos pirotécnicos y actividades recreativas como jaripeos, palenques y bailes populares. La feria es una manifestación de la devoción religiosa y un espacio para fortalecer los lazos comunitarios</p>
+                    <h4>Carnaval</h4>
+                    <p>El Carnaval en Chilchotla es otra tradición significativa que se celebra antes de Semana Santa. Durante este evento, cuadrillas participan en presentaciones artísticas en la explanada municipal, fomentando la integración social y la sana convivencia. El gobierno municipal apoya estas actividades para preservar las costumbres heredadas</p>
+                    <h4>Concurso de Catrinas y Calaveritas</h4>
+                    <p>Como parte de las celebraciones del Día de Muertos, el municipio organiza desfiles y concursos donde los participantes diseñan disfraces creativos relacionados con esta tradición mexicana. Estas actividades buscan promover el gusto por las tradiciones entre niños y jóvenes</p>
+                    <h4>Conmemoraciones Históricas</h4>
+                    <p>Chilchotla también celebra fechas importantes como el 5 de mayo (Batalla de Puebla), el 20 de noviembre (Revolución Mexicana), así como festividades religiosas como Semana Santa, Navidad y Año Nuevo</p>
+                    <h4>danzas</h4>
+                    <p>La danza de los negritos y los Pilatos sí se presentan en fiestas patronales.La música puede incluir tambor y, en algunos casos, flauta, aunque en la danza de los negritos suele predominar el violín y la guitarra. Los Pilatos tienen un papel fundamental en la organización y animación de las fiestas.</p>
+                    <div class="galeria">
+            <img src="imagen23.jpg" alt="Tradiciones 1">
+            <img src="imagen24.jpg" alt="Tradiciones 2">
+            <img src="imagen25.jpg" alt="Tradiciones 3">
+            <img src="imagen33.jpg" alt="Tradiciones 3">
+            <img src="imagen32.jpg" alt="Tradiciones 3">
+            <img src="imagen31.jpg" alt="Tradiciones 3">
+            <img src="imagen28.jpg" alt="Tradiciones 3">
+            <img src="imagen37.jpg" alt="Tradiciones 3">
+            <img src="imagen36.jpg" alt="Tradiciones 3">
+            <img src="imagen34.jpg" alt="Tradiciones 3">
+            <img src="imagen20.jpg" alt="Tradiciones 3">
+            <img src="5.jpg" alt="Tradiciones 3">
+            <img src="8.jpg" alt="Tradiciones 3">
+            <img src="12.jpeg" alt="Tradiciones 3">
+            <img src="11.jpeg" alt="Tradiciones 3">
+        </div>
+    </section>
+    <section id="gastronomia" class="contenido">
+      <h2>Gastronomía</h2>
+      <p>La gastronomía de Chilchotla, Puebla, destaca por platillos tradicionales como el mole poblano y la trucha, este último especialmente preparado en las zonas cercanas a ríos y cascadas. Además, es común encontrar tamales de maíz azul o blanco, de haba y otros rellenos, acompañados de salsas regionales. Un producto emblemático es el aguardiente de guinda, bebida típica elaborada con la fruta local, así como mermeladas y conservas de frutas como peras, duraznos y ciruelas. Durante festividades y ferias, también se ofrecen antojitos como tamales de frijol y pan artesana.</p>
+      <div class="galeria-gastronomia">
+          <div class="tarjeta">
+              <img src="Imagen51.jpg" alt="Platillo 1">
+              <h3>xocotamales</h3>
+              <p>Los xocotamales se elaboran con masa de maíz azul y se envuelven en hoja de macuilillo, un árbol común en la región. Por lo general, estos tamales se acompañan con mole tradicional.</p>
+          </div>
+          <div class="tarjeta">
+              <img src="Imagen50.jpg" alt="Platillo 2">
+              <h3>Tamales de haba</h3>
+              <p>Los tamales de haba se preparan con masa de maíz blanco y haba tierna, envueltos en hoja de milpa. Se acompañan tradicionalmente con una salsa de chile cubano, aportando un sabor característico a este platillo típico.</p>
+          </div>
+          <div class="tarjeta">
+              <img src="Imagen56.jpg" alt="Platillo 3">
+              <h3>palmos</h3>
+              <p>El palmos (flor de izote o palmito de maguey) se cuece y luego se guisa con cebolla, chile cubano y huevo batido, resultando un platillo sabroso y nutritivo.</p>
+          </div>
+          <div class="tarjeta">
+              <img src="Imagen55.jpg" alt="Platillo 4">
+              <h3>chilacayote</h3>
+              <p>El chilacayote tierno se guisa con chile cubano y cebolla, y a veces se le agregan frijoles y epazote.</p>
+          </div>
+          <div class="tarjeta">
+            <img src="Imagen53.jpg" alt="Platillo 5">
+            <h3>chilacayote dulce</h3>
+            <p>es una bebida tipica de chilchotla hecha con maiz nistamalisado.</p>
+        </div>
+        <div class="tarjeta">
+            <img src="Imagen45.jpg" alt="Platillo 6">
+            <h3>Guinda</h3>
+            <p>La guinda es un fruto endémico que en Chilchotla se produce principalmente en el barrio del Carmen, donde es muy apreciado.
+            Con esta fruta se elabora el aguardiente de guinda, una bebida típica y tradicional del municipio</p>
+        </div>
+        <div class="tarjeta">
+            <img src="Imagen48.jpg" alt="Platillo 7">
+            <h3>hierva mora</h3>
+            <p>La hierba mora es un platillo tradicional y nutritivo, normalmente acompañado con salsa de chile cubano.</p>
+        </div>
+        <div class="tarjeta">
+            <img src="azul.jpg" alt="Platillo 8">
+            <h3>atole agrio</h3>
+            <p>atole agrio bebida tipica en la region solo en la temporada de semana santa hecho con maiz azul.</p>
+        </div>
+      </div>
+  </section>
+    <section id="religion" class="contenido">
+        <h2>Religión</h2>
+        <p>Religión tradicional y festividades
+            La religión católica es la principal en el municipio, como se refleja en la existencia de la Parroquia de Chilchotla y en la celebración de fiestas religiosas tradicionales. Las festividades más destacadas son la fiesta patronal de San Pedro y San Pablo, que se celebra los días 28, 29 y 30 de junio, y otras celebraciones como el 12 de diciembre (Día de la Virgen de Guadalupe), Semana Santa, y fechas importantes nacionales y religiosas como el 5 de mayo (Batalla de Puebla), 1 y 2 de noviembre (Día de Todos los Santos), 20 de noviembre (aniversario de la Revolución), 24 de diciembre y Año Nuevo. Estas festividades suelen incluir misas solemnes, procesiones, música tradicional con instrumentos como la mandolina, guitarra, acordeón, violín y banda, así como actividades comunitarias y culturales</p>
+            <p>Religión predominante: Católica, con fuerte arraigo en festividades patronales y tradiciones locales.</p>
+            <p>Celebraciones religiosas: Incluyen fiestas patronales, Semana Santa, Día de la Virgen de Guadalupe, y fechas cívico-religiosas, con participación comunitaria activa</p>
+            <p>La convivencia entre católicos y evangélicos en Chilchotla refleja la pluralidad religiosa del municipio, donde ambas expresiones de fe contribuyen a la vida social y cultural de la comunidad.</p>
+            <div class="galeria">
+            <img src="imagen33.jpg" alt="Religión 1">
+            <img src="imagen30.jpg" alt="Religión 2">
+            <img src="imagen34.jpg" alt="Religión 3">
+            <img src="imagen25.jpg" alt="Religión 4">
+            <img src="imagen43.jpg" alt="Religión 5">
+            <img src="2.jpg" alt="Religión 6">
+        </div>
+    </section>
+
+    <section id="turismo" class="contenido">
+        <h2>Lugares Turísticos</h2>
+        <p>El turismo en el municipio de Chilchotla, Puebla, se centra principalmente en sus atractivos naturales y en experiencias relacionadas con la gastronomía y tradiciones locales.</p>
+        <h3>Principales atractivos turísticos</h3>
+        <h4>Cascadas y naturaleza:</h4>
+        <h4>Cascada La Fundición:</h4>
+        <p>Ubicada en la 3ª sección del municipio, es una de las cascadas más impresionantes, con caídas de agua que superan los 50 metros de altura en algunos tramos. Es un sitio visitado todo el año por su belleza y ambiente natural, con miradores y escaleras de piedra para admirar las caídas de agua</p>
+        <h4>Cascada (general):</h4>
+        <p>También existe otra cascada destacada en la 4ª sección, a pocos minutos de la cabecera municipal. Ambas ofrecen paisajes espectaculares, senderos y, en ocasiones, la posibilidad de caminar por pasadizos detrás de la caída de agua</p>
+        <h4>Puentes y miradores:</h4>
+        <p>Existen puentes metálicos y peatonales que permiten vistas privilegiadas de las cascadas y el entorno natural, así como áreas para tomar fotografías y disfrutar del paisaje</p>
+        <h4>Centro recreativo “La Virgen”:</h4>
+        <p>Ubicado a 30 minutos de la cabecera municipal, es un espacio para el esparcimiento, ideal para visitas familiares y actividades al aire libre</p>
+        <h3>Experiencias turísticas</h3>
+        <h4>Gastronomía:</h4>
+        <p>En los alrededores de las cascadas y el centro recreativo, es común encontrar puestos de comida donde se preparan truchas frescas y antojitos mexicanos tradicionales. También es posible practicar la pesca deportiva y degustar la trucha recién pescada</p>
+        <p>El mole poblano y el aguardiente regional llamado “guinda” son otros platillos y bebidas típicas del municipio que atraen a los visitantes</p>
+        <div class="galeria">
+            <img src="imagen10.jpg" alt="Turismo 1">
+            <img src="imagen11.jpg" alt="Turismo 2">
+            <img src="imagen13.jpg" alt="Turismo 3">
+            <img src="imagen9.jpg" alt="Turismo 4">
+            <img src="imagen7.jpg" alt="Turismo 5">
+            <img src="imagen39.jpg" alt="Turismo 6">
+            <img src="imagen4.jpg" alt="Turismo 7">
+            <img src="imagen5.jpg" alt="Turismo 8">
+            <img src="imagen6.jpg" alt="Turismo 9">
+            <img src="10.jpg" alt="Turismo 10">
+
+        </div>
+        <p>El turismo en Chilchotla se caracteriza por su entorno natural, especialmente sus cascadas y el centro recreativo “La Virgen”, complementado por una oferta gastronómica local y festividades tradicionales que permiten a los visitantes disfrutar de la cultura y naturaleza del municipio</p>
+    </section>
+
+    <section class="preguntas">
+        <h2>Preguntas Frecuentes</h2>
+        <div class="pregunta-item" onclick="toggleRespuesta(this)">
+            <strong>¿Cómo llegar a Chilchotla?</strong>
+            <div class="respuesta">Desde Puebla capital, tomar la carretera federal 150 con dirección a Veracruz...</div>
+        </div>
+        <div class="pregunta-item" onclick="toggleRespuesta(this)">
+            <strong>¿Cuáles son las tradiciones más importantes?</strong>
+            <div class="respuesta">Las tradiciones incluyen la Fiesta de San José y el Mercado Artesanal...</div>
+        </div>
+        <div class="pregunta-item" onclick="toggleRespuesta(this)">
+            <strong>¿Qué platillos típicos se pueden encontrar?</strong>
+            <div class="respuesta">En Chilchotla, puedes disfrutar de platillos como el mole poblano y los tamales...</div>
+        </div>
+    </section>
+
+    <section class="poema">
+        <p>"La belleza de un lugar no solo se mide por sus paisajes, sino por la calidez de su gente y la riqueza de su cultura."</p>
+    </section>
+
+    <footer>
+        <div class="referencias">
+            <h3>Referencias</h3>
+   <center><p>1. Wikipedia – Municipio de Chilchotla  
+   https://es.wikipedia.org/wiki/Municipio_de_Chilchotla</p></center>
+
+   <center> <p>2. Data México – Perfil de Chilchotla 
+   https://www.economia.gob.mx/datamexico/es/profile/geo/chilchotla </p></center>
+
+   <center><p>3. Auditoría Puebla – Chilchotla  
+   https://www.auditoriapuebla.gob.mx/sujetos-de-revision/cuentas-publicas/ayuntamientos/item/chilchotla</p></center>
+
+   <center><p>4. Orden Jurídico Poblano – Plan Municipal de Desarrollo 2021-2024  
+   https://ojp.puebla.gob.mx/media/k2/attachments/Plan_Municipal_de_Desarrollo_de_Chilchotla_2021_2024_T4_19052022.pdf</p></center>
+
+   <center>5. EcuRed – Chilchotla  
+   https://www.ecured.cu/Chilchotla_(M%C3%A9xico)</center>
+            <p>2025 Chilchotla, Puebla</p>
+        </div>
+    </footer>
+
+    <script>
+        function mostrarContenido(id) {
+            const secciones = document.querySelectorAll('.contenido');
+            secciones.forEach(seccion => {
+                seccion.classList.remove('visible');
+            });
+
+            document.querySelector('.galeria').style.display = 'none';
+            document.querySelector('.preguntas').style.display = 'none';
+
+            const seccionSeleccionada = document.getElementById(id);
+            if (seccionSeleccionada) {
+                seccionSeleccionada.classList.add('visible');
+                document.querySelector('.galeria').style.display = 'flex';
+                document.querySelector('.preguntas').style.display = 'block';
+            }
+        }
+
+        function toggleRespuesta(pregunta) {
+            const respuesta = pregunta.querySelector('.respuesta');
+            respuesta.style.display = respuesta.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
