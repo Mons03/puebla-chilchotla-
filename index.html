@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Chilchotla, Puebla | Joya Cultural</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --color-primario: #2c5e13; 
@@ -39,19 +38,26 @@
             font-size: 3rem;
         }
 
+        /* NAV MENU */
         .nav-menu {
             background: var(--color-primario);
-            padding: 1rem;
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
+        /* Lista de navegación */
         .nav-menu ul {
             display: flex;
             justify-content: center;
             gap: 2rem;
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-menu a {
@@ -65,6 +71,66 @@
             color: var(--color-secundario);
         }
 
+        /* Botón hamburguesa */
+        .menu-hamburguesa {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+        }
+
+        .menu-hamburguesa span {
+            display: block;
+            height: 3px;
+            background: var(--color-texto-blanco);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Animación para cruz cuando está activo */
+        .menu-hamburguesa.activo span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-hamburguesa.activo span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-hamburguesa.activo span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Responsive: ocultar menú y mostrar hamburguesa en pantallas pequeñas */
+        @media (max-width: 768px) {
+            .nav-menu ul {
+                position: absolute;
+                top: 60px; /* altura aproximada del nav */
+                left: 0;
+                right: 0;
+                background: var(--color-primario);
+                flex-direction: column;
+                gap: 0;
+                display: none;
+            }
+
+            .nav-menu ul.activo {
+                display: flex;
+            }
+
+            .nav-menu ul li {
+                border-top: 1px solid var(--color-secundario);
+                text-align: center;
+                padding: 1rem 0;
+            }
+
+            .menu-hamburguesa {
+                display: flex;
+            }
+        }
+
+        /* Mantén el resto de tus estilos existentes */
         .introduccion {
             padding: 2rem;
             text-align: center;
@@ -143,6 +209,7 @@
         .visible {
             display: block;
         }
+
         .galeria-gastronomia {
             display: flex;
             overflow-x: auto;
@@ -150,6 +217,7 @@
             gap: 1rem;
             scroll-snap-type: x mandatory;
         }
+
         .tarjeta {
             background: var(--color-texto-blanco);
             border-radius: 10px;
@@ -160,9 +228,11 @@
             scroll-snap-align: start;
             transition: transform 0.3s;
         }
+
         .tarjeta:hover {
             transform: scale(1.05);
         }
+
         .tarjeta img {
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
@@ -170,10 +240,12 @@
             height: 150px;
             object-fit: cover;
         }
+
         .tarjeta h3 {
             margin: 0.5rem 0;
             color: var(--color-primario);
         }
+
         .tarjeta p {
             padding: 0 1rem 1rem;
             color: var(--color-texto);
@@ -186,20 +258,26 @@
     </header>
 
     <nav class="nav-menu">
-        <ul>
+        <!-- Botón hamburguesa -->
+        <div class="menu-hamburguesa" id="btn-menu" aria-label="Menú de navegación" role="button" tabindex="0">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul id="menu">
             <li><a href="#inicio" onclick="mostrarContenido('inicio')">Inicio</a></li>
-                        <li><a href="#historia" onclick="mostrarContenido('historia')">Historia</a></li>
-                        <li><a href="#cultura" onclick="mostrarContenido('cultura')">Cultura</a></li>
-                        <li><a href="#arte" onclick="mostrarContenido('arte')">Arte</a></li>
-                        <li><a href="#geografia" onclick="mostrarContenido('geografia')">Geografía</a></li>
-                        <li><a href="#tradiciones" onclick="mostrarContenido('tradiciones')">Tradiciones</a></li>
-                        <li><a href="#gastronomia" onclick="mostrarContenido('gastronomia')">Gastronomía</a></li>
-                        <li><a href="#religion" onclick="mostrarContenido('religion')">Religión</a></li>
-                        <li><a href="#turismo" onclick="mostrarContenido('turismo')">Lugares Turísticos</a></li>
-                    </ul>
-                </nav>
-            
-                <section id="inicio" class="contenido visible">
+            <li><a href="#historia" onclick="mostrarContenido('historia')">Historia</a></li>
+            <li><a href="#cultura" onclick="mostrarContenido('cultura')">Cultura</a></li>
+            <li><a href="#arte" onclick="mostrarContenido('arte')">Arte</a></li>
+            <li><a href="#geografia" onclick="mostrarContenido('geografia')">Geografía</a></li>
+            <li><a href="#tradiciones" onclick="mostrarContenido('tradiciones')">Tradiciones</a></li>
+            <li><a href="#gastronomia" onclick="mostrarContenido('gastronomia')">Gastronomía</a></li>
+            <li><a href="#religion" onclick="mostrarContenido('religion')">Religión</a></li>
+            <li><a href="#turismo" onclick="mostrarContenido('turismo')">Lugares Turísticos</a></li>
+        </ul>
+    </nav>
+              <section id="inicio" class="contenido visible">
                     <div class="introduccion">
                         <h2>Bienvenido a Chilchotla</h2>
                         <p>Chilchotla es un municipio lleno de historia, cultura y tradiciones que cautivan a quienes lo visitan. Rodeado de paisajes naturales impresionantes, este lugar combina su riqueza gastronómica, como el mole poblano y los tamales, con festividades llenas de color y significado, como el Día de Muertos y su tradicional Carnaval. Cada rincón de Chilchotla cuenta una historia única que refleja la esencia de su gente y su conexión con las raíces ancestrales.</p>
@@ -437,6 +515,35 @@
         <p>El turismo en Chilchotla se caracteriza por su entorno natural, especialmente sus cascadas y el centro recreativo “La Virgen”, complementado por una oferta gastronómica local y festividades tradicionales que permiten a los visitantes disfrutar de la cultura y naturaleza del municipio</p>
     </section>
 
+    <script>
+        // Función para mostrar contenido (debes tener definida esta función)
+        function mostrarContenido(seccion) {
+            // Ejemplo básico: ocultar todos y mostrar el seleccionado
+            const secciones = document.querySelectorAll('.contenido');
+            secciones.forEach(sec => sec.classList.remove('visible'));
+            const seleccionado = document.getElementById(seccion);
+            if (seleccionado) {
+                seleccionado.classList.add('visible');
+            }
+            if (window.innerWidth <= 768) {
+                menu.classList.remove('activo');
+                btnMenu.classList.remove('activo');
+            }
+        }
+        const btnMenu = document.getElementById('btn-menu');
+        const menu = document.getElementById('menu');
+
+        btnMenu.addEventListener('click', () => {
+            menu.classList.toggle('activo');
+            btnMenu.classList.toggle('activo');
+        });
+        btnMenu.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                btnMenu.click();
+            }
+        });
+    </script>
     <section class="preguntas">
         <h2>Preguntas Frecuentes</h2>
         <div class="pregunta-item" onclick="toggleRespuesta(this)">
